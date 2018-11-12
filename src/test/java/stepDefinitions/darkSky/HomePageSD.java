@@ -1,10 +1,14 @@
 package stepDefinitions.darkSky;
 
 import java.util.concurrent.TimeUnit;
+
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.When;
 import pageObjects.darkSky.HomePage;
 
 public class HomePageSD {
@@ -13,12 +17,38 @@ public class HomePageSD {
     private HomePage home;
 
     @Given("^Goto$")
-    public void user_is_on_Home_Page(){
+    public void goTo() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver/2.41/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://darksky.net");
+        this.driver = new ChromeDriver();
+        this.driver.manage().window().maximize();
+        this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        this.driver.get("https://darksky.net");
+    }
+
+    @When("^Clear search text field$")
+    public void clearSearchTextField() {
+        this.home = new HomePage(this.driver);
+        this.home.clearSearchTextField();
+    }
+
+    @And("^Enter address or zipcode into the search field \"([^\"]*)\"$")
+    public void enterAddressOrZipcodeIntoTheSearchField(String data) {
+        this.home = new HomePage(this.driver);
+        this.home.enterAddressOrZipcodeIntoTheSearchField(data);
+    }
+
+    @And("^Click on search magnifying glass$")
+    public void clickOnSearchMagnifyingGlass() {
+        this.home = new HomePage(this.driver);
+        this.home.clickOnSearchMagnifyingGlass();
+    }
+
+    @Then("^Verify current temperature is between low and high value$")
+    public void verifyCurrentTemperatureIsBetweenLowAndHighValue() {
+        this.home = new HomePage(this.driver);
+        Assert.assertTrue(
+                this.home.getCurrentValueOfTemperature() >= this.home.getLowValueOfTemperature() &&
+                        this.home.getCurrentValueOfTemperature() <= this.home.getHighValueOfTemperature());
     }
 
 }
