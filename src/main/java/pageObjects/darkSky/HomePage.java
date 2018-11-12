@@ -15,7 +15,19 @@ public class HomePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(how = How.CSS, using = "//*[@id=\"searchForm\"]/input")
+    @FindBy(how = How.CSS, using = "//*[@id='searchForm']/input")
     private WebElement searchForm;
+
+    @FindBy(how = How.CSS, using = "//*[@id='searchForm']/a[2]/img")
+    private WebElement searchButton;
+
+    @FindBy(how = How.CSS, using = "//*[@id='title']/span[1]/span[2]/span[1]")
+    private WebElement tempCurrentValue;
+
+    @FindBy(how = How.CSS, using = "//*[@id='title']/span[1]/span[2]/span[2]/span[2]")
+    private WebElement tempLowValue;
+
+    @FindBy(how = How.CSS, using = "//*[@id='title']/span[1]/span[2]/span[2]/span[3]")
+    private WebElement tempHighValue;
 
 }
