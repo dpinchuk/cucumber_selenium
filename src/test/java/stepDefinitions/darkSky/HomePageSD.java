@@ -43,7 +43,7 @@ public class HomePageSD {
         this.home.clickOnSearchMagnifyingGlass();
     }
 
-    @Then("^Verify current temperature is between low and high value$")
+    @And("^Verify current temperature is between low and high value$")
     public void verifyCurrentTemperatureIsBetweenLowAndHighValue() {
         this.home = new HomePage(this.driver);
         Assert.assertTrue(
