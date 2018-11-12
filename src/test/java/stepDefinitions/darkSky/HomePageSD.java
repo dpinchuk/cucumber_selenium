@@ -3,7 +3,6 @@ package stepDefinitions.darkSky;
 import java.util.concurrent.TimeUnit;
 
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
