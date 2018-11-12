@@ -46,6 +46,11 @@ public class HomePageSD {
     @And("^Verify current temperature is between low and high value$")
     public void verifyCurrentTemperatureIsBetweenLowAndHighValue() {
         this.home = new HomePage(this.driver);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Assert.assertTrue(
                 this.home.getCurrentValueOfTemperature() >= this.home.getLowValueOfTemperature() &&
                         this.home.getCurrentValueOfTemperature() <= this.home.getHighValueOfTemperature());

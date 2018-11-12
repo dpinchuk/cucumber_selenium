@@ -42,18 +42,19 @@ public class HomePage {
     }
 
     public int getCurrentValueOfTemperature() {
-        String str = this.tempCurrentValue.getText().split(" ")[0].substring(0, this.tempCurrentValue.getText().split(" ")[0].length() - 1);
-        return Integer.parseInt(str);
+        return this.getNumberFromString(this.tempCurrentValue.getText(), 0);
     }
 
     public int getLowValueOfTemperature() {
-        String str = this.tempLowValue.getText().split(" ")[1].substring(0, this.tempLowValue.getText().split(" ")[1].length() - 1);
-        return Integer.parseInt(str);
+        return this.getNumberFromString(this.tempLowValue.getText(), 1);
     }
 
     public int getHighValueOfTemperature() {
-        String str = this.tempHighValue.getText().split(" ")[1].substring(0, this.tempHighValue.getText().split(" ")[1].length() - 1);
-        return Integer.parseInt(str);
+        return this.getNumberFromString(this.tempHighValue.getText(), 1);
+    }
+
+    private int getNumberFromString(String str, int index) {
+        return Integer.parseInt(str.split(" ")[index].substring(0, str.split(" ")[index].length() - 1));
     }
 
 }
